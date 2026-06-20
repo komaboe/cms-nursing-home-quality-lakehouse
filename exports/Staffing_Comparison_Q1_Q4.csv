@@ -1,0 +1,6 @@
+metric,q1_lowest_staffing,q4_highest_staffing,difference_q1_minus_q4,pct_difference_q1_vs_q4
+Average total nurse HPRD,3.06,5,-1.94,-38.8
+Average citations,32.33,23.44,8.89,37.9
+Average severity score,72.4,50.02,22.38,44.7
+Average harm-plus citations,2.18,1.09,1.09,100
+Average certified beds,116.7,87.8,28.9,32.9

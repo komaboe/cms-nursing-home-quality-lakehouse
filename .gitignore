@@ -1,0 +1,6 @@
+# Raw source data is downloaded separately from the public CMS links.
+data/*
+!data/.gitkeep
+
+# macOS local metadata
+.DS_Store
