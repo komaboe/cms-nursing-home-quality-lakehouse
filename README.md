@@ -1,3 +1,4 @@
+### B142 Data Integration Assignment
 # Nursing Home Quality Integration with Spark
 
 This project builds a Databricks and Apache Spark pipeline that integrates four public CMS nursing-home datasets into one facility-level analytical table.
@@ -44,12 +45,12 @@ After `00 Setup` has created the volume, create the two raw-file subdirectories 
 
 ```text
 /Volumes/b142/nh_bronze/raw/
-+-- care_compare/
-|   +-- NH_ProviderInfo_May2026.csv
-|   +-- NH_HealthCitations_May2026.csv
-|   +-- NH_Penalties_May2026.csv
-+-- pbj/
-    +-- PBJ_dailynursestaffing_CY2025Q4.csv
+    care_compare/
+        NH_ProviderInfo_May2026.csv
+        NH_HealthCitations_May2026.csv
+        NH_Penalties_May2026.csv
+    pbj/
+        PBJ_dailynursestaffing_CY2025Q4.csv
 ```
 
 The Databricks notebooks use wildcard paths, so a different CMS month or PBJ quarter can be used if the same file naming patterns are kept:
@@ -82,7 +83,7 @@ The project uses an ELT pattern:
 2. Run `00 Setup` to create the Bronze, Silver, and Gold schemas plus the raw upload volume.
 3. Upload raw CMS and PBJ CSV files into the created volume subdirectories.
 4. Read raw CSV files as strings and store them as Bronze Delta tables.
-5. Clean and type source-level tables in Silver.
+5. Clean source-level fields and cast data types in Silver.
 6. Aggregate citation, penalty, and daily staffing rows to one row per facility.
 7. Left join the rollups to Provider Information to create the Gold `facility_quality` table.
 8. Use the Gold table for analysis, validation, and report charts.
