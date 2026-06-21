@@ -127,12 +127,11 @@ Saved report artifacts are stored in `exports/`:
 | --- | --- |
 | `Average_Severity_Score_by_Staffing_Quartile.png` | Bar chart for staffing quartiles and severity score |
 | `Average_Citations_by_Facility_Size_Band.png` | Bar chart for facility size bands and average citations |
-| `Staffing_Quartiles.csv` | Staffing quartile summary table |
+| `Staffing_Quartiles_Deficiencies.csv` | Staffing quartile deficiency summary table |
+| `Staffing_Quartiles_Penalties.csv` | Staffing quartile penalty-burden summary table |
 | `Staffing_Comparison_Q1_Q4.csv` | Lowest vs highest staffing quartile comparison |
 | `Facility_Size_Bands_Summary.csv` | Facility size band summary table |
 | `Validation_Table.csv` | PBJ-derived RN HPRD validation summary |
-
-The notebook also displays a `penalty_by_staffing` table that compares penalty coverage, average fines, fine counts, and payment denials across the same staffing quartiles.
 
 ## Result Summary
 
