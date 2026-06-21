@@ -1,11 +1,11 @@
 ### B142 Data Integration Assignment
 # Nursing Home Quality Integration with Spark
 
-This project builds a Databricks and Apache Spark pipeline that integrates four public CMS nursing-home datasets into one facility-level analytical table.
+This project builds a Databricks and Apache Spark pipeline that integrates four public CMS nursing-home datasets into one facility-level analytical table for descriptive quality analysis.
 
 The main question is:
 
-> Can separate CMS nursing-home datasets be integrated into one useful facility-level table for descriptive analysis of staffing, deficiencies, and penalties?
+> What facility-level quality and regulatory patterns become visible when CMS nursing-home staffing, deficiency, penalty, and provider datasets are integrated in a Spark lakehouse?
 
 The pipeline uses a Bronze, Silver, and Gold structure. Raw CSV files are uploaded to a Databricks volume, stored as Bronze Delta tables, cleaned into Silver tables, aggregated to facility grain in Gold, and then analyzed with Spark SQL.
 
@@ -114,10 +114,11 @@ Key integration decisions:
 
 ## Analysis Outputs
 
-The final notebook answers two descriptive questions and runs one validation check:
+The final notebook produces three descriptive analysis views and one validation check:
 
 - How do deficiency patterns differ across staffing quartiles?
-- How do deficiency patterns differ across facility size bands?
+- How does penalty burden differ across staffing quartiles?
+- How do deficiency and fine patterns differ across facility size bands?
 - How close is PBJ-derived RN HPRD to the reported RN staffing field?
 
 Saved report artifacts are stored in `exports/`:
@@ -131,6 +132,8 @@ Saved report artifacts are stored in `exports/`:
 | `Facility_Size_Bands_Summary.csv` | Facility size band summary table |
 | `Validation_Table.csv` | PBJ-derived RN HPRD validation summary |
 
+The notebook also displays a `penalty_by_staffing` table that compares penalty coverage, average fines, fine counts, and payment denials across the same staffing quartiles.
+
 ## Result Summary
 
 The integrated Gold table contains 14,700 provider facilities. Join coverage is high for PBJ staffing records and deficiency records, while penalty records apply to a smaller share of facilities.
@@ -143,6 +146,8 @@ The staffing quartile analysis shows that facilities in the lowest staffing quar
 
 The same comparison also shows that the lowest-staffing quartile has larger facilities on average, so facility size is a possible confounding factor.
 
+The penalty-burden analysis uses the same staffing quartiles and shows a similar descriptive pattern. In the lowest-staffing quartile, 56.0% of facilities have penalty records, compared with 37.9% in the highest-staffing quartile. Average computed fines per facility are also higher in the lowest-staffing quartile ($45,512 vs $20,239).
+
 The facility size analysis shows that very large facilities have higher average citations than small facilities:
 
 - small facilities: 18.78 average citations;
@@ -152,7 +157,7 @@ The RN staffing validation compares the reported RN HPRD field with PBJ-derived 
 
 ## Scope And Limitations
 
-The results are descriptive and observational. They show facility-level patterns in public CMS data, but they do not prove that staffing levels cause deficiency outcomes.
+The results are descriptive and observational. They show facility-level patterns in public CMS data, but they do not prove that staffing levels cause deficiency outcomes or penalty events.
 
 Main limitations:
 
