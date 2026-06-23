@@ -127,42 +127,18 @@ Saved report artifacts are stored in `exports/`:
 | --- | --- |
 | `Average_Severity_Score_by_Staffing_Quartile.png` | Bar chart for staffing quartiles and severity score |
 | `Average_Citations_by_Facility_Size_Band.png` | Bar chart for facility size bands and average citations |
-| `Staffing_Quartiles_Deficiencies.csv` | Staffing quartile deficiency summary table |
-| `Staffing_Quartiles_Penalties.csv` | Staffing quartile penalty-burden summary table |
-| `Staffing_Comparison_Q1_Q4.csv` | Lowest vs highest staffing quartile comparison |
-| `Facility_Size_Bands_Summary.csv` | Facility size band summary table |
 | `Validation_Table.csv` | PBJ-derived RN HPRD validation summary |
 
 ## Result Summary
 
-The integrated Gold table contains 14,700 provider facilities. Join coverage is high for PBJ staffing records and deficiency records, while penalty records apply to a smaller share of facilities.
+The Gold table keeps all 14,700 provider facilities. Match coverage is high for PBJ staffing records (97.6%) and deficiency records (99.5%), while penalty records are naturally sparser (46.8%).
 
-The staffing quartile analysis shows that facilities in the lowest staffing quartile have higher average deficiency outcomes than facilities in the highest staffing quartile:
+The main pattern is that lower-staffed facilities show worse average outcomes than higher-staffed facilities. Compared with the highest staffing quartile, the lowest staffing quartile has more average citations (32.33 vs 23.44), a higher severity score (72.40 vs 50.02), more harm-plus citations (2.18 vs 1.09), and higher average computed fines ($45,512 vs $20,239).
 
-- 37.9% more average citations;
-- 44.7% higher average severity score;
-- 100.0% more average harm-plus citations.
-
-The same comparison also shows that the lowest-staffing quartile has larger facilities on average, so facility size is a possible confounding factor.
-
-The penalty-burden analysis uses the same staffing quartiles and shows a similar descriptive pattern. In the lowest-staffing quartile, 56.0% of facilities have penalty records, compared with 37.9% in the highest-staffing quartile. Average computed fines per facility are also higher in the lowest-staffing quartile ($45,512 vs $20,239).
-
-The facility size analysis shows that very large facilities have higher average citations than small facilities:
-
-- small facilities: 18.78 average citations;
-- very large facilities: 35.90 average citations.
-
-The RN staffing validation compares the reported RN HPRD field with PBJ-derived RN HPRD. Across 14,071 compared facilities, reported RN HPRD averages 0.678 and PBJ-derived RN HPRD averages 0.473. The difference is treated as a sanity check, not as a perfect reconciliation, because public CMS summary fields and PBJ-derived values can use different reporting windows or definitions.
+Facility size appears to matter as well. Very large facilities average 35.90 citations, compared with 18.78 for small facilities. The RN HPRD validation is used as a comparison check: across 14,071 facilities, reported RN HPRD averages 0.678 and PBJ-derived RN HPRD averages 0.473.
 
 ## Scope And Limitations
 
-The results are descriptive and observational. They show facility-level patterns in public CMS data, but they do not prove that staffing levels cause deficiency outcomes or penalty events.
+This project is descriptive and facility-level. It shows patterns in integrated public CMS data, but it does not prove causal effects between staffing, size, deficiencies, and penalties.
 
-Main limitations:
-
-- only one PBJ quarter is used;
-- the analysis is facility-level, not resident-level;
-- CMS summary fields and computed rollups may use different definitions;
-- facility size, ownership, geography, and case mix may affect the observed patterns.
-
-This project uses public facility-level data only. It does not use patient-level data, resident records, or private health information.
+Main limits: only one PBJ quarter is used, resident-level data is not available, CMS summary fields and computed rollups may use different definitions, and facility size may partly explain the staffing-quartile pattern. The project uses public facility-level data only and does not include patient-level or private health information.
